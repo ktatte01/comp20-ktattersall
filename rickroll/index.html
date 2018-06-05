@@ -22,15 +22,28 @@
         };
 
         function check_time() {
-                if (vid.currentTime >= 18 && vid.currentTime <= 34) {
+                if (vid.currentTime <= 18.4) {
                         document.getElementById("lyrics").innerHTML =
-                                "We're no strangers to love\n"
-                                "You know the rules and so do I\n"
-                                "A full commitment's what I'm thinking of\n"
-                                "You wouldn't get this from any other guy";
+                                "<br>";
+                }
+                if (vid.currentTime >= 18.5 && vid.currentTime <= 34.8) {
+                        document.getElementById("lyrics").innerHTML =
+                                "We're no strangers to love<br>You know the rules and so do I<br>A full commitment's what I'm thinking of<br>You wouldn't get this from any other guy";
+                }
+                if (vid.currentTime >= 34.81 && vid.currentTime <= 42.7) {
+                        document.getElementById("lyrics").innerHTML =
+                                "I just wanna tell you how I'm feeling<br>Gotta make you understand";
+                }
+                if ((vid.currentTime >= 42.8 && vid.currentTime <= 60.3) ||
+                        (vid.currentTime >= 85.5 && vid.currentTime <= 101.9)) {
+                        document.getElementById("lyrics").innerHTML =
+                                "Never gonna give you up<br>Never gonna let you down<br>Never gonna run around and desert you<br>Never gonna make you cry<br>Never gonna say goodbye<br>Never gonna tell a lie and hurt you";
+                }
+                if (vid.currentTime >= 60.4 && vid.currentTime <= 82.5) {
+                        document.getElementById("lyrics").innerHTML =
+                                "We've known each other for so long<br>Your heart's been aching, but<br>You're too shy to say it<br>Inside, we both know what's been going on<br>We know the game and we're gonna play it";
                 }
                 
-
 
         }
 
