@@ -16,21 +16,24 @@
 <script>
         // Complete this section and create a CSS file named style.css
         var vid = document.getElementById("rickroll");
-        var curr_lyrics = document.getElementById("lyrics");
-        var curr_time = vid.currentTime;
 
-
-        vid.ontimeupdate = function() {check_time()};
+        vid.ontimeupdate = function() {
+                check_time();
+        };
 
         function check_time() {
-                document.getElementById("lyrics").innerHTML = vid.currentTime;
+                if (vid.currentTime >= 18 && vid.currentTime <= 34) {
+                        document.getElementById("lyrics").innerHTML =
+                                "We're no strangers to love\n"
+                                "You know the rules and so do I\n"
+                                "A full commitment's what I'm thinking of\n"
+                                "You wouldn't get this from any other guy";
+                }
+                
+
+
         }
 
-        
-        //document.write(curr_time);
-        if (curr_time > 10 && curr_time < 20) {
-                document.write("We're no strangers to love");
-        }
 
 </script>
 </body>
