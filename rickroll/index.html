@@ -14,7 +14,7 @@
 <div id="lyrics"></div>
 
 <script>
-        // Complete this section and create a CSS file named style.css
+
         var vid = document.getElementById("rickroll");
 
         vid.ontimeupdate = function() {
@@ -28,40 +28,34 @@
                 }
                 if (vid.currentTime >= 18.5 && vid.currentTime <= 34.8) {
                         document.getElementById("lyrics").innerHTML =
-                                "We're no strangers to love<br>You know the rules and so do I<br>A full commitment's what I'm thinking of<br>You wouldn't get this from any other guy";
+                                "We're no strangers to love<br><br>You know the rules and so do I<br><br>A full commitment's what I'm thinking of<br><br>You wouldn't get this from any other guy";
                 }
                 if ((vid.currentTime >= 34.81 && vid.currentTime <= 42.7) ||
                         (vid.currentTime >= 153.2 && vid.currentTime <= 161)) {
                         document.getElementById("lyrics").innerHTML =
-                                "I just wanna tell you how I'm feeling<br>Gotta make you understand";
+                                "I just wanna tell you how I'm feeling<br><br>Gotta make you understand";
                 }
                 if ((vid.currentTime >= 42.8 && vid.currentTime <= 60.3) ||
                         (vid.currentTime >= 85.2 && vid.currentTime <= 119.3) ||
                         (vid.currentTime >= 161.1)) {
                         document.getElementById("lyrics").innerHTML =
-                                "Never gonna give you up<br>Never gonna let you down<br>Never gonna run around and desert you<br>Never gonna make you cry<br>Never gonna say goodbye<br>Never gonna tell a lie and hurt you";
+                                "Never gonna give you up<br><br>Never gonna let you down<br><br>Never gonna run around and desert you<br><br>Never gonna make you cry<br><br>Never gonna say goodbye<br><br>Never gonna tell a lie and hurt you";
                 }
                 if ((vid.currentTime >= 60.4 && vid.currentTime <= 77.1) ||
                         (vid.currentTime >= 136.4 && vid.currentTime <= 153.1)) {
                         document.getElementById("lyrics").innerHTML =
-                                "We've known each other for so long<br>Your heart's been aching, but<br>You're too shy to say it<br>Inside, we both know what's been going on<br>We know the game and we're gonna play it";
+                                "We've known each other for so long<br><br>Your heart's been aching, but<br><br>You're too shy to say it<br><br>Inside, we both know what's been going on<br><br>We know the game and we're gonna play it";
                 }
                 if (vid.currentTime >= 77.2 && vid.currentTime <= 85.1) {
                         document.getElementById("lyrics").innerHTML =
-                                "And if you ask me how I'm feeling<br>Don't tell me you're too blind to see";
+                                "And if you ask me how I'm feeling<br><br>Don't tell me you're too blind to see";
                 }
                 if (vid.currentTime >= 119.4 && vid.currentTime <= 136.3) {
                         document.getElementById("lyrics").innerHTML =
-                                "(Ooh, give you up)<br>(Ooh, give you up)<br>Never gonna give, never gonna give<br>(Give you up)<br>Never gonna give, never gonna give<br>(Give you up)";
-                }            
-
-
-
-                
-                
+                                "(Ooh, give you up)<br><br>(Ooh, give you up)<br><br>Never gonna give, never gonna give<br><br>(Give you up)<br><br>Never gonna give, never gonna give<br><br>(Give you up)";
+                }              
 
         }
-
 
 </script>
 </body>
