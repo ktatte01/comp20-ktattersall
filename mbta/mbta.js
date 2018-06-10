@@ -23,11 +23,22 @@ function initMap() {
         var place_cntsq = {lat: 42.365486, lng: -71.103802};
         var place_brntn = {lat: 42.2078543, lng: -71.029583};
 
-        var places = [place_sstat, place_andrw, place_portr, place_harsq, place_jfk,
-                        place_shmnl, place_pktrm, place_brdwy, place_nqncy, place_smmnl,
-                        place_davis, place_alfcl, place_knncl, place_chmnl, place_dwnxg,
-                        place_qnctr, place_qamnl, place_asmnl, place_wlsta, place_fldcr,
-                        place_cntsq, place_brntn];
+        var places = [place_alfcl, place_davis, place_portr, place_harsq,
+                        place_cntsq, place_knncl, place_chmnl, place_pktrm,
+                        place_dwnxg, place_sstat, place_brdwy, place_andrw, 
+                        place_jfk, place_nqncy, place_wlsta, place_qnctr,
+                        place_qamnl, place_brntn, place_shmnl, place_smmnl,   
+                        place_fldcr, place_asmnl];
+        var braintree = [place_alfcl, place_davis, place_portr, place_harsq,
+                        place_cntsq, place_knncl, place_chmnl, place_pktrm,
+                        place_dwnxg, place_sstat, place_brdwy, place_andrw, 
+                        place_jfk, place_nqncy, place_wlsta, place_qnctr,
+                        place_qamnl, place_brntn];
+        var ashmont = [place_alfcl, place_davis, place_portr, place_harsq,
+                        place_cntsq, place_knncl, place_chmnl, place_pktrm,
+                        place_dwnxg, place_sstat, place_brdwy, place_andrw, 
+                        place_jfk, place_shmnl, place_fldcr, place_smmnl,
+                        place_asmnl];
 
 
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -35,14 +46,33 @@ function initMap() {
                         zoom: 11
         });
 
-        var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+        var icon_base = 'https://maps.google.com/mapfiles/kml/shapes/';
         var i;
 
         for (i = 0; i < 22; i++) {
                 var marker = new google.maps.Marker({
                         position: places[i],
                         map: map,
-                        icon: iconBase + 'rail.png'
+                        icon: icon_base + 'rail.png'
                 });
         }
+
+        var braintree_line = new google.maps.Polyline({
+                path: braintree,
+                geodesic: true,
+                strokeColor: '#FF0000',
+                strokeOpacity: 1.0,
+                strokeWeight: 3
+        });
+
+        var ashmont_line = new google.maps.Polyline({
+                path: ashmont,
+                geodesic: true,
+                strokeColor: '#FF0000',
+                strokeOpacity: 1.0,
+                strokeWeight: 2
+        });
+
+        braintree_line.setMap(map);
+        ashmont_line.setMap(map);
 }
