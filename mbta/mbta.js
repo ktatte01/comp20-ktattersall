@@ -23,31 +23,26 @@ function initMap() {
         var place_cntsq = {lat: 42.365486, lng: -71.103802};
         var place_brntn = {lat: 42.2078543, lng: -71.029583};
 
+        var places = [place_sstat, place_andrw, place_portr, place_harsq, place_jfk,
+                        place_shmnl, place_pktrm, place_brdwy, place_nqncy, place_smmnl,
+                        place_davis, place_alfcl, place_knncl, place_chmnl, place_dwnxg,
+                        place_qnctr, place_qamnl, place_asmnl, place_wlsta, place_fldcr,
+                        place_cntsq, place_brntn];
+
+
         var map = new google.maps.Map(document.getElementById('map'), {
                         center: place_sstat,
                         zoom: 11
         });
 
-        var mark_sstat = new google.maps.Marker({position: place_sstat, map: map});
-        var mark_andrw = new google.maps.Marker({position: place_andrw, map: map});
-        var mark_portr = new google.maps.Marker({position: place_portr, map: map});
-        var mark_harsq = new google.maps.Marker({position: place_harsq, map: map});
-        var mark_jfk   = new google.maps.Marker({position: place_jfk,   map: map});
-        var mark_shmnl = new google.maps.Marker({position: place_shmnl, map: map});
-        var mark_pktrm = new google.maps.Marker({position: place_pktrm, map: map});
-        var mark_brdwy = new google.maps.Marker({position: place_brdwy, map: map});
-        var mark_nqncy = new google.maps.Marker({position: place_nqncy, map: map});
-        var mark_smmnl = new google.maps.Marker({position: place_smmnl, map: map});
-        var mark_davis = new google.maps.Marker({position: place_davis, map: map});
-        var mark_alfcl = new google.maps.Marker({position: place_alfcl, map: map});
-        var mark_knncl = new google.maps.Marker({position: place_knncl, map: map});
-        var mark_chmnl = new google.maps.Marker({position: place_chmnl, map: map});
-        var mark_dwnxg = new google.maps.Marker({position: place_dwnxg, map: map});
-        var mark_qnctr = new google.maps.Marker({position: place_qnctr, map: map});
-        var mark_qamnl = new google.maps.Marker({position: place_qamnl, map: map});
-        var mark_asmnl = new google.maps.Marker({position: place_asmnl, map: map});
-        var mark_wlsta = new google.maps.Marker({position: place_wlsta, map: map});
-        var mark_fldcr = new google.maps.Marker({position: place_fldcr, map: map});
-        var mark_cntsq = new google.maps.Marker({position: place_cntsq, map: map});
-        var mark_brntn = new google.maps.Marker({position: place_brntn, map: map});
+        var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+        var i;
+
+        for (i = 0; i < 22; i++) {
+                var marker = new google.maps.Marker({
+                        position: places[i],
+                        map: map,
+                        icon: iconBase + 'rail.png'
+                });
+        }
 }
