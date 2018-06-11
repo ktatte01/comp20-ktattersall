@@ -1,7 +1,7 @@
 /* lab.js */
 function parse() {
         var http_req = new XMLHttpRequest();
-        http_req.open("GET", "data.json", true);
+        http_req.open("GET", "https://messagehub.herokuapp.com/messages.json", true);
         http_req.send(null);
 
         http_req.onreadystatechange = function() {
