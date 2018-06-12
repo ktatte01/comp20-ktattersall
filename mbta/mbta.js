@@ -46,14 +46,17 @@ function initMap() {
                         zoom: 11
         });
 
-        var icon_base = 'https://maps.google.com/mapfiles/kml/shapes/';
         var i;
 
         for (i = 0; i < 22; i++) {
+                var icon = {url: "https://maps.google.com/mapfiles/kml/shapes/rail.png",
+                        scaledSize: new google.maps.Size(40, 40)
+                };
+
                 var marker = new google.maps.Marker({
                         position: places[i],
                         map: map,
-                        icon: icon_base + 'rail.png'
+                        icon: icon
                 });
         }
 
