@@ -6,6 +6,11 @@ To my knowledge, all aspects of this work have been correctly implemented.
 
 I have neither collaborated nor discussed this assignment with anyone.
 
-I spent approximately _ hours completing this assignment.
+I spent approximately 1.5 hours completing this assignment.
 
-is it possible to request the data from a different origin (e.g., http://messagehub.herokuapp.com/) or from your local machine (from file:///) from using XMLHttpRequest? Why or why not?
+It is impossible to request data from a different origin or from your local
+machine using XMLHttpRequest due to the same origin policy. The same origin
+policy dictates that two pages must have the same port and host in order for
+the two resources to interact. The policy was implemented to prevent malicious
+security breaches in which information from one website could be supplied to 
+another, less trustworthy website.
