@@ -1,5 +1,16 @@
 /* mbta.js */
 function initMap() {
+
+        if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(init_user_icon);
+        } else { 
+                map.innerHTML = "couldn't find you";
+        }
+
+}
+
+function init_user_icon(position) {
+
         var place_sstat = {lat: 42.352271, lng: -71.05524200000001};
         var place_andrw = {lat: 42.330154, lng: -71.057655};
         var place_portr = {lat: 42.3884, lng: -71.11914899999999};
@@ -46,6 +57,17 @@ function initMap() {
                         zoom: 11
         });
 
+        var user_location = {lat: position.coords.latitude, lng: position.coords.longitude};
+        var user_icon = {url: "https://maps.google.com/mapfiles/kml/shapes/woman.png",
+                        scaledSize: new google.maps.Size(40, 40)
+                        };
+
+        var user_marker = new google.maps.Marker({
+                position: user_location,
+                map: map,
+                icon: user_icon
+        });
+
         var i;
 
         for (i = 0; i < 22; i++) {
@@ -78,4 +100,9 @@ function initMap() {
 
         braintree_line.setMap(map);
         ashmont_line.setMap(map);
+
+        
 }
+
+
+
