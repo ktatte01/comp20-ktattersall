@@ -34,21 +34,12 @@ function init_places(position) {
         var place_cntsq = {lat: 42.365486, lng: -71.103802};
         var place_brntn = {lat: 42.2078543, lng: -71.029583};
 
-        var places = [place_alfcl, place_davis, place_portr, place_harsq,
-                        place_cntsq, place_knncl, place_chmnl, place_pktrm,
-                        place_dwnxg, place_sstat, place_brdwy, place_andrw, 
-                        place_jfk, place_nqncy, place_wlsta, place_qnctr,
-                        place_qamnl, place_brntn, place_shmnl, place_smmnl,   
-                        place_fldcr, place_asmnl];
         var braintree = [place_alfcl, place_davis, place_portr, place_harsq,
                         place_cntsq, place_knncl, place_chmnl, place_pktrm,
                         place_dwnxg, place_sstat, place_brdwy, place_andrw, 
                         place_jfk, place_nqncy, place_wlsta, place_qnctr,
                         place_qamnl, place_brntn];
-        var ashmont = [place_alfcl, place_davis, place_portr, place_harsq,
-                        place_cntsq, place_knncl, place_chmnl, place_pktrm,
-                        place_dwnxg, place_sstat, place_brdwy, place_andrw, 
-                        place_jfk, place_shmnl, place_fldcr, place_smmnl,
+        var ashmont = [place_jfk, place_shmnl, place_fldcr, place_smmnl,
                         place_asmnl];
 
         /* Initialize map */
@@ -69,31 +60,38 @@ function init_places(position) {
                 icon: user_icon
         });
 
-
-
-        var display_text = '<h3>Test</h3>';
+        /* Initialize info window */
         var infowindow = new google.maps.InfoWindow({
                 content: '<div class = "bodyContent"> test </div>'
         });
 
-        google.maps.event.addListener(user_marker, 'click', function() {
+        user_marker.addListener('click', function() {
                 infowindow.open(map, user_marker);
         });
 
         /* Initialize Red Line markers */
         var i;
-        for (i = 0; i < 22; i++) {
+        for (i = 0; i < 18; i++) {
                 var icon = {url: "https://maps.google.com/mapfiles/kml/shapes/rail.png",
                         scaledSize: new google.maps.Size(40, 40)
                 };
 
-                var marker = new google.maps.Marker({
-                        position: places[i],
+                if (i > 0 || i < 5) {
+                        var markerA = new google.maps.Marker({
+                                position: ashmont[i],
+                                map: map,
+                                icon: icon
+                        });
+                }
+
+                var markerB = new google.maps.Marker({
+                        position: braintree[i],
                         map: map,
                         icon: icon
                 });
         }
 
+        /* Initialize polylines */
         var braintree_line = new google.maps.Polyline({
                 path: braintree,
                 geodesic: true,
@@ -107,11 +105,17 @@ function init_places(position) {
                 geodesic: true,
                 strokeColor: '#FF0000',
                 strokeOpacity: 1.0,
-                strokeWeight: 2
+                strokeWeight: 3
         });
 
         braintree_line.setMap(map);
         ashmont_line.setMap(map);
+
+  //      var closest_station = places[0];
+      //  var shortest_distance = computeDistanceBetween(from, to[, radius])
+
+        
+
 
         
 }
