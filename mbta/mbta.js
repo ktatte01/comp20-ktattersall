@@ -2,14 +2,14 @@
 function initMap() {
 
         if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(init_user_icon);
+                navigator.geolocation.getCurrentPosition(init_places);
         } else { 
                 map.innerHTML = "couldn't find you";
         }
 
 }
 
-function init_user_icon(position) {
+function init_places(position) {
 
         var place_sstat = {lat: 42.352271, lng: -71.05524200000001};
         var place_andrw = {lat: 42.330154, lng: -71.057655};
@@ -51,12 +51,13 @@ function init_user_icon(position) {
                         place_jfk, place_shmnl, place_fldcr, place_smmnl,
                         place_asmnl];
 
-
+        /* Initialize map */
         var map = new google.maps.Map(document.getElementById('map'), {
                         center: place_sstat,
-                        zoom: 11
+                        zoom: 8
         });
 
+        /* Initialize user's marker */
         var user_location = {lat: position.coords.latitude, lng: position.coords.longitude};
         var user_icon = {url: "https://maps.google.com/mapfiles/kml/shapes/woman.png",
                         scaledSize: new google.maps.Size(40, 40)
@@ -68,8 +69,19 @@ function init_user_icon(position) {
                 icon: user_icon
         });
 
-        var i;
 
+
+        var display_text = '<h3>Test</h3>';
+        var infowindow = new google.maps.InfoWindow({
+                content: '<div class = "bodyContent"> test </div>'
+        });
+
+        google.maps.event.addListener(user_marker, 'click', function() {
+                infowindow.open(map, user_marker);
+        });
+
+        /* Initialize Red Line markers */
+        var i;
         for (i = 0; i < 22; i++) {
                 var icon = {url: "https://maps.google.com/mapfiles/kml/shapes/rail.png",
                         scaledSize: new google.maps.Size(40, 40)
