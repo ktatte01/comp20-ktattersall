@@ -128,54 +128,71 @@ function init_places(position) {
                                         break;
                                 case 2:
                                         content_str += "Porter Square<br>" + shortest_distance + " miles away";
+                                        var closest = [user_location, places[i]];
                                         break;
                                 case 3:
                                         content_str += "Harvard Square<br>" + shortest_distance + " miles away";
+                                        var closest = [user_location, places[i]];
                                         break;
                                 case 4:
                                         content_str += "Central Square<br>" + shortest_distance + " miles away";
+                                        var closest = [user_location, places[i]];
                                         break;
                                 case 5:
                                         content_str += "Kendall/MIT<br>" + shortest_distance + " miles away";
+                                        var closest = [user_location, places[i]];
                                         break;
                                 case 6:
                                         content_str += "Charles/MGH<br>" + shortest_distance + " miles away";
+                                        var closest = [user_location, places[i]];
                                         break;
                                 case 7:
                                         content_str += "Park Street<br>" + shortest_distance + " miles away";
+                                        var closest = [user_location, places[i]];
                                         break;
                                 case 8:
                                         content_str += "Downtown Crossing<br>" + shortest_distance + " miles away";
+                                        var closest = [user_location, places[i]];
                                         break;
                                 case 9:
                                         content_str += "South Station<br>" + shortest_distance + " miles away";
+                                        var closest = [user_location, places[i]];
                                         break;
                                 case 10:
                                         content_str += "Broadway<br>" + shortest_distance + " miles away";
+                                        var closest = [user_location, places[i]];
                                         break;
                                 case 11:
                                         content_str += "Andrew<br>" + shortest_distance + " miles away";
+                                        var closest = [user_location, places[i]];
                                         break;
                                 case 12:
                                         content_str += "JFK/UMass<br>" + shortest_distance + " miles away";
+                                        var closest = [user_location, places[i]];
                                         break;
                                 case 13:
                                         content_str += "North Quincy<br>" + shortest_distance + " miles away";
+                                        var closest = [user_location, places[i]];
                                         break;
                                 case 14:
                                         content_str += "Wollaston<br>" + shortest_distance + " miles away";
+                                        var closest = [user_location, places[i]];
                                         break;
                                 case 15:
                                         content_str += "Quincy Center<br>" + shortest_distance + " miles away";
+                                        var closest = [user_location, places[i]];
                                         break;
                                 case 16:
                                         content_str += "Quincy Adams<br>" + shortest_distance + " miles away";
+                                        var closest = [user_location, places[i]];
                                         break;
                                 case 17:
                                         content_str += "Braintree<br>" + shortest_distance + " miles away";
+                                        var closest = [user_location, places[i]];
                                         break;
                                 case 18:
                                         content_str += "Savin Hill<br>" + shortest_distance + " miles away";
+                                        var closest = [user_location, places[i]];
                                         break;
                                 case 19:
                                         content_str += "Shawmut<br>" + shortest_distance + " miles away";
@@ -185,6 +202,7 @@ function init_places(position) {
                                         break;
                                 case 21:
                                         content_str += "Ashmont<br>" + shortest_distance + " miles away";
+                                        var closest = [user_location, places[i]];
                                         break;
                         }
                         break;
