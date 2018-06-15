@@ -80,7 +80,7 @@ function init_places(position) {
                 });
         }
 
-        /* Initialize polylines */
+        /* Initialize red line polylines */
         var braintree_line = new google.maps.Polyline({
                 path: braintree,
                 geodesic: true,
@@ -112,18 +112,19 @@ function init_places(position) {
                 }
         }
 
+        /* Determine closest station/shortest distance */
         shortest_distance = shortest_distance / 1609;
- 
         var content_str = "Closest Station: ";
-
         for (i = 0; i < 22; i++) {
                 if (closest_station.lat() == places[i].lat() && closest_station.lng() == places[i].lng()) {
                         switch (i) {
                                 case 0:
                                         content_str += "Alewife<br>" + shortest_distance + " miles away";
+                                        var closest = [user_location, places[i]];
                                         break;
                                 case 1:
                                         content_str += "Davis Square<br>" + shortest_distance + " miles away";
+                                        var closest = [user_location, places[i]];
                                         break;
                                 case 2:
                                         content_str += "Porter Square<br>" + shortest_distance + " miles away";
@@ -199,7 +200,16 @@ function init_places(position) {
                 infowindow.open(map, user_marker);
         });
 
+        /* Initialize user polyline */
+        var closest_line = new google.maps.Polyline({
+                path: closest,
+                geodesic: true,
+                strokeColor: '#0000FF',
+                strokeOpacity: 1.0,
+                strokeWeight: 3
+        });
+
+        closest_line.setMap(map);
 
 }
-
 
