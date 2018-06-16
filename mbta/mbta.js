@@ -51,7 +51,7 @@ function init_places(position) {
         /* Initialize map */
         var map = new google.maps.Map(document.getElementById('map'), {
                         center: place_sstat,
-                        zoom: 9
+                        zoom: 11
         });
 
         /* Initialize user's marker */
@@ -67,18 +67,181 @@ function init_places(position) {
         });
 
 
-        /* Initialize Red Line markers */
+
+        /* Initialize Red Line markers and info windows*/
         var i;
         var train_icon = {url: "https://maps.google.com/mapfiles/kml/shapes/rail.png",
                         scaledSize: new google.maps.Size(40, 40)
         };
+
+        var markers = [];
+        
+        var alfcl_infowindow = new google.maps.InfoWindow({
+                position: place_alfcl,
+                content: "test alfcl"
+        });
+        var davis_infowindow = new google.maps.InfoWindow({
+                position: place_davis,
+                content: "test davis!"
+        });
+        var portr_infowindow = new google.maps.InfoWindow({
+                position: place_portr,
+                content: "test portr"
+        });
+        var harsq_infowindow = new google.maps.InfoWindow({
+                position: place_harsq,
+                content: "test harsq"
+        });
+        var cntsq_infowindow = new google.maps.InfoWindow({
+                position: place_cntsq,
+                content: "test cntsq"
+        });
+        var knncl_infowindow = new google.maps.InfoWindow({
+                position: place_knncl,
+                content: "test knncl"
+        });
+        var chmnl_infowindow = new google.maps.InfoWindow({
+                position: place_chmnl,
+                content: "test chmnl"
+        });
+        var pktrm_infowindow = new google.maps.InfoWindow({
+                position: place_pktrm,
+                content: "test pktrm"
+        });
+        var dwnxg_infowindow = new google.maps.InfoWindow({
+                position: place_dwnxg,
+                content: "test dwnxg"
+        });
+        var sstat_infowindow = new google.maps.InfoWindow({
+                position: place_sstat,
+                content: "test sstat"
+        });
+        var brdwy_infowindow = new google.maps.InfoWindow({
+                position: place_brdwy,
+                content: "test brdwy"
+        });
+        var andrw_infowindow = new google.maps.InfoWindow({
+                position: place_andrw,
+                content: "test andrw"
+        });
+        var jfk_infowindow = new google.maps.InfoWindow({
+                position: place_jfk,
+                content: "test jfk"
+        });
+        var nqncy_infowindow = new google.maps.InfoWindow({
+                position: place_nqncy,
+                content: "test nqncy"
+        });
+        var wlsta_infowindow = new google.maps.InfoWindow({
+                position: place_wlsta,
+                content: "test wlsta"
+        });
+        var qnctr_infowindow = new google.maps.InfoWindow({
+                position: place_qnctr,
+                content: "test qnctr"
+        });
+        var qamnl_infowindow = new google.maps.InfoWindow({
+                position: place_qamnl,
+                content: "test qamnl"
+        });
+        var brntn_infowindow = new google.maps.InfoWindow({
+                position: place_brntn,
+                content: "test brntn"
+        });
+        var shmnl_infowindow = new google.maps.InfoWindow({
+                position: place_shmnl,
+                content: "test shmnl"
+        });
+        var smmnl_infowindow = new google.maps.InfoWindow({
+                position: place_smmnl,
+                content: "test smmnl"
+        });
+        var fldcr_infowindow = new google.maps.InfoWindow({
+                position: place_fldcr,
+                content: "test fldcr"
+        });
+        var asmnl_infowindow = new google.maps.InfoWindow({
+                position: place_asmnl,
+                content: "test asmnl"
+        });
+
         for (i = 0; i < 22; i++) {
                 var marker = new google.maps.Marker({
                         position: places[i],
                         map: map,
                         icon: train_icon
                 });
+                markers[i] = marker;
         }
+
+        markers[0].addListener('click', function() {
+                alfcl_infowindow.open(map, markers[0]);
+        });
+        markers[1].addListener('click', function() {
+                davis_infowindow.open(map, markers[1]);
+        });
+        markers[2].addListener('click', function() {
+                portr_infowindow.open(map, markers[2]);
+        });
+        markers[3].addListener('click', function() {
+                harsq_infowindow.open(map, markers[3]);
+        });
+        markers[4].addListener('click', function() {
+                cntsq_infowindow.open(map, markers[4]);
+        });
+        markers[5].addListener('click', function() {
+                knncl_infowindow.open(map, markers[5]);
+        });
+        markers[6].addListener('click', function() {
+                chmnl_infowindow.open(map, markers[6]);
+        });
+        markers[7].addListener('click', function() {
+                pktrm_infowindow.open(map, markers[7]);
+        });
+        markers[8].addListener('click', function() {
+                dwnxg_infowindow.open(map, markers[8]);
+        });
+        markers[9].addListener('click', function() {
+                sstat_infowindow.open(map, markers[9]);
+        });
+        markers[10].addListener('click', function() {
+                brdwy_infowindow.open(map, markers[10]);
+        });
+        markers[11].addListener('click', function() {
+                andrw_infowindow.open(map, markers[11]);
+        });
+        markers[12].addListener('click', function() {
+                jfk_infowindow.open(map, markers[12]);
+        });
+        markers[13].addListener('click', function() {
+                nqncy_infowindow.open(map, markers[13]);
+        });
+        markers[14].addListener('click', function() {
+                wlsta_infowindow.open(map, markers[14]);
+        });
+        markers[15].addListener('click', function() {
+                qnctr_infowindow.open(map, markers[15]);
+        });
+        markers[16].addListener('click', function() {
+                qamnl_infowindow.open(map, markers[16]);
+        });
+        markers[17].addListener('click', function() {
+                brntn_infowindow.open(map, markers[17]);
+        });
+        markers[18].addListener('click', function() {
+                shmnl_infowindow.open(map, markers[18]);
+        });
+        markers[19].addListener('click', function() {
+                smmnl_infowindow.open(map, markers[19]);
+        });
+        markers[20].addListener('click', function() {
+                fldcr_infowindow.open(map, markers[20]);
+        });
+        markers[21].addListener('click', function() {
+                asmnl_infowindow.open(map, markers[21]);
+        });
+        
+
 
         /* Initialize red line polylines */
         var braintree_line = new google.maps.Polyline({
@@ -210,12 +373,12 @@ function init_places(position) {
         }
                 
         /* Initialize info window */
-        var infowindow = new google.maps.InfoWindow({
+        var user_infowindow = new google.maps.InfoWindow({
                 content: content_str
         });
 
         user_marker.addListener('click', function() {
-                infowindow.open(map, user_marker);
+                user_infowindow.open(map, user_marker);
         });
 
         /* Initialize user polyline */
@@ -228,6 +391,5 @@ function init_places(position) {
         });
 
         closest_line.setMap(map);
-
 }
 
