@@ -88,6 +88,8 @@ function init_places(position) {
                 t_infowindow.open(map, markers[0]);
         });
 
+        var to_ashmont
+
         markers[1].addListener('click', function() {
                 var http_req = new XMLHttpRequest();
                 http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-davis", true);
@@ -97,10 +99,23 @@ function init_places(position) {
                                 console.log("test1");
                                 var obj = JSON.parse(http_req.responseText);
                                 console.log("test2");
-                                t_infowindow.setContent(http_req.responseText);
+                                (http_req.responseText);
 
+                                var i, in_train, out_train, content_str = "";
 
-                                console.log(obj.data[0].attributes.arrival_time);
+                                for (i = 0; i < 10; i++) {
+                                        if (obj.data[i].attributes.direction_id == 0) {
+                                                in_train = "Inbound train arriving at: ";
+                                                out_train = "Inbound train departing at: ";
+                                        } else {
+                                                in_train = "Outbound train arriving at: ";
+                                                out_train = "Outbound train departing at: ";
+                                        }
+                                        
+                                        content_str += in_train + obj.data[i].attributes.arrival_time + '\n' + out_train + obj.data[i].attributes.departure_time + '\n';
+                                }
+
+                                t_infowindow.setContent(content_str);
                         }
                 }
 
