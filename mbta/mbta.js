@@ -95,16 +95,16 @@ function init_places(position) {
                 http_req.onreadystatechange = function() {
                         if (http_req.readyState == 4 && http_req.status == 200) {
                                 console.log("test1");
-                                console.log(http_req.responseText);
-                                //var obj = JSON.parse('{"url":"https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-davis", "id":"url_id_01"}');
+                                var obj = JSON.parse(http_req.responseText);
                                 console.log("test2");
                                 t_infowindow.setContent(http_req.responseText);
-                                //console.log(obj);
+
+
+                                console.log(obj.data[0].attributes.arrival_time);
                         }
                 }
 
                 http_req.send();
-
                 
                 t_infowindow.open(map, markers[1]);
         });
