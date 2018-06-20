@@ -66,14 +66,18 @@ function init_places(position) {
         });
 
         /* Initialize Red Line markers and info windows*/
-        var i;
+        var i, j;
         var train_icon = {url: "https://maps.google.com/mapfiles/kml/shapes/rail.png",
                         scaledSize: new google.maps.Size(40, 40)
         };
 
         var markers = [];
 
-        var t_infowindow = new google.maps.InfoWindow();
+        var infowindow = new google.maps.InfoWindow();
+
+        var url;
+        var alfcl_url = "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-alfcl";
+        var davis_url = "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-davis";
 
         for (i = 0; i < 22; i++) {
                 var marker = new google.maps.Marker({
@@ -81,14 +85,39 @@ function init_places(position) {
                         map: map,
                         icon: train_icon
                 });
+
                 markers[i] = marker;
         }
 
-        markers[0].addListener('click', function() {
-                t_infowindow.open(map, markers[0]);
-        });
+        var in_train, out_train, content_string = "";
 
-        var to_ashmont
+        markers[0].addListener('click', function() {
+                var http_req = new XMLHttpRequest();
+                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-alfcl", true);
+                
+                http_req.onreadystatechange = function() {
+                        if (http_req.readyState == 4 && http_req.status == 200) {
+                                var obj = JSON.parse(http_req.responseText);
+                                var i, in_train, out_train, content_str = "";
+                                for (i = 0; i < 10; i++) {
+                                        if (obj.data[i].attributes.direction_id == 0) {
+                                                in_train = "Southbound train arriving at: ";
+                                                out_train = "; southbound train departing at: ";
+                                        } else {
+                                                in_train = "Northbound train arriving at: ";
+                                                out_train = "; northbound train departing at: ";
+                                        }
+                                        
+                                        content_str += in_train + obj.data[i].attributes.arrival_time + '\n' + out_train + obj.data[i].attributes.departure_time + '\n';
+                                }
+
+                                infowindow.setContent(content_str);
+                        }
+                }
+
+                http_req.send();
+                infowindow.open(map, markers[0]);
+        });
 
         markers[1].addListener('click', function() {
                 var http_req = new XMLHttpRequest();
@@ -96,93 +125,588 @@ function init_places(position) {
                 
                 http_req.onreadystatechange = function() {
                         if (http_req.readyState == 4 && http_req.status == 200) {
-                                console.log("test1");
                                 var obj = JSON.parse(http_req.responseText);
-                                console.log("test2");
-                                (http_req.responseText);
-
                                 var i, in_train, out_train, content_str = "";
-
                                 for (i = 0; i < 10; i++) {
                                         if (obj.data[i].attributes.direction_id == 0) {
-                                                in_train = "Inbound train arriving at: ";
-                                                out_train = "Inbound train departing at: ";
+                                                in_train = "Southbound train arriving at: ";
+                                                out_train = "; southbound train departing at: ";
                                         } else {
-                                                in_train = "Outbound train arriving at: ";
-                                                out_train = "Outbound train departing at: ";
+                                                in_train = "Northbound train arriving at: ";
+                                                out_train = "; northbound train departing at: ";
                                         }
                                         
                                         content_str += in_train + obj.data[i].attributes.arrival_time + '\n' + out_train + obj.data[i].attributes.departure_time + '\n';
                                 }
 
-                                t_infowindow.setContent(content_str);
+                                infowindow.setContent(content_str);
                         }
                 }
 
                 http_req.send();
-                
-                t_infowindow.open(map, markers[1]);
+                infowindow.open(map, markers[1]);
         });
+
         markers[2].addListener('click', function() {
-                t_infowindow.open(map, markers[2]);
+                var http_req = new XMLHttpRequest();
+                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-portr", true);
+                
+                http_req.onreadystatechange = function() {
+                        if (http_req.readyState == 4 && http_req.status == 200) {
+                                var obj = JSON.parse(http_req.responseText);
+                                var i, in_train, out_train, content_str = "";
+                                for (i = 0; i < 10; i++) {
+                                        if (obj.data[i].attributes.direction_id == 0) {
+                                                in_train = "Southbound train arriving at: ";
+                                                out_train = "; southbound train departing at: ";
+                                        } else {
+                                                in_train = "Northbound train arriving at: ";
+                                                out_train = "; northbound train departing at: ";
+                                        }
+                                        
+                                        content_str += in_train + obj.data[i].attributes.arrival_time + '\n' + out_train + obj.data[i].attributes.departure_time + '\n';
+                                }
+
+                                infowindow.setContent(content_str);
+                        }
+                }
+
+                http_req.send();
+                infowindow.open(map, markers[2]);
         });
+
         markers[3].addListener('click', function() {
-                t_infowindow.open(map, markers[3]);
+                var http_req = new XMLHttpRequest();
+                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-harsq", true);
+                
+                http_req.onreadystatechange = function() {
+                        if (http_req.readyState == 4 && http_req.status == 200) {
+                                var obj = JSON.parse(http_req.responseText);
+                                var i, in_train, out_train, content_str = "";
+                                for (i = 0; i < 10; i++) {
+                                        if (obj.data[i].attributes.direction_id == 0) {
+                                                in_train = "Southbound train arriving at: ";
+                                                out_train = "; southbound train departing at: ";
+                                        } else {
+                                                in_train = "Northbound train arriving at: ";
+                                                out_train = "; northbound train departing at: ";
+                                        }
+                                        
+                                        content_str += in_train + obj.data[i].attributes.arrival_time + '\n' + out_train + obj.data[i].attributes.departure_time + '\n';
+                                }
+
+                                infowindow.setContent(content_str);
+                        }
+                }
+
+                http_req.send();
+                infowindow.open(map, markers[3]);
         });
+
         markers[4].addListener('click', function() {
-                t_infowindow.open(map, markers[4]);
+                var http_req = new XMLHttpRequest();
+                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-cntsq", true);
+                
+                http_req.onreadystatechange = function() {
+                        if (http_req.readyState == 4 && http_req.status == 200) {
+                                var obj = JSON.parse(http_req.responseText);
+                                var i, in_train, out_train, content_str = "";
+                                for (i = 0; i < 10; i++) {
+                                        if (obj.data[i].attributes.direction_id == 0) {
+                                                in_train = "Southbound train arriving at: ";
+                                                out_train = "; southbound train departing at: ";
+                                        } else {
+                                                in_train = "Northbound train arriving at: ";
+                                                out_train = "; northbound train departing at: ";
+                                        }
+                                        
+                                        content_str += in_train + obj.data[i].attributes.arrival_time + '\n' + out_train + obj.data[i].attributes.departure_time + '\n';
+                                }
+
+                                infowindow.setContent(content_str);
+                        }
+                }
+
+                http_req.send();
+                infowindow.open(map, markers[4]);
         });
+
         markers[5].addListener('click', function() {
-                t_infowindow.open(map, markers[5]);
+                var http_req = new XMLHttpRequest();
+                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-knncl", true);
+                
+                http_req.onreadystatechange = function() {
+                        if (http_req.readyState == 4 && http_req.status == 200) {
+                                var obj = JSON.parse(http_req.responseText);
+                                var i, in_train, out_train, content_str = "";
+                                for (i = 0; i < 10; i++) {
+                                        if (obj.data[i].attributes.direction_id == 0) {
+                                                in_train = "Southbound train arriving at: ";
+                                                out_train = "; southbound train departing at: ";
+                                        } else {
+                                                in_train = "Northbound train arriving at: ";
+                                                out_train = "; northbound train departing at: ";
+                                        }
+                                        
+                                        content_str += in_train + obj.data[i].attributes.arrival_time + '\n' + out_train + obj.data[i].attributes.departure_time + '\n';
+                                }
+
+                                infowindow.setContent(content_str);
+                        }
+                }
+
+                http_req.send();
+                infowindow.open(map, markers[5]);
         });
+
         markers[6].addListener('click', function() {
-                t_infowindow.open(map, markers[6]);
+                var http_req = new XMLHttpRequest();
+                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-chmnl", true);
+                
+                http_req.onreadystatechange = function() {
+                        if (http_req.readyState == 4 && http_req.status == 200) {
+                                var obj = JSON.parse(http_req.responseText);
+                                var i, in_train, out_train, content_str = "";
+                                for (i = 0; i < 10; i++) {
+                                        if (obj.data[i].attributes.direction_id == 0) {
+                                                in_train = "Southbound train arriving at: ";
+                                                out_train = "; southbound train departing at: ";
+                                        } else {
+                                                in_train = "Northbound train arriving at: ";
+                                                out_train = "; northbound train departing at: ";
+                                        }
+                                        
+                                        content_str += in_train + obj.data[i].attributes.arrival_time + '\n' + out_train + obj.data[i].attributes.departure_time + '\n';
+                                }
+
+                                infowindow.setContent(content_str);
+                        }
+                }
+
+                http_req.send();
+                infowindow.open(map, markers[6]);
         });
+
         markers[7].addListener('click', function() {
-                t_infowindow.open(map, markers[7]);
+                var http_req = new XMLHttpRequest();
+                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-pktrm", true);
+                
+                http_req.onreadystatechange = function() {
+                        if (http_req.readyState == 4 && http_req.status == 200) {
+                                var obj = JSON.parse(http_req.responseText);
+                                var i, in_train, out_train, content_str = "";
+                                for (i = 0; i < 10; i++) {
+                                        if (obj.data[i].attributes.direction_id == 0) {
+                                                in_train = "Southbound train arriving at: ";
+                                                out_train = "; southbound train departing at: ";
+                                        } else {
+                                                in_train = "Northbound train arriving at: ";
+                                                out_train = "; northbound train departing at: ";
+                                        }
+                                        
+                                        content_str += in_train + obj.data[i].attributes.arrival_time + '\n' + out_train + obj.data[i].attributes.departure_time + '\n';
+                                }
+
+                                infowindow.setContent(content_str);
+                        }
+                }
+
+                http_req.send();
+                infowindow.open(map, markers[7]);
         });
+
         markers[8].addListener('click', function() {
-                t_infowindow.open(map, markers[8]);
+                var http_req = new XMLHttpRequest();
+                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-dwnxg", true);
+                
+                http_req.onreadystatechange = function() {
+                        if (http_req.readyState == 4 && http_req.status == 200) {
+                                var obj = JSON.parse(http_req.responseText);
+                                var i, in_train, out_train, content_str = "";
+                                for (i = 0; i < 10; i++) {
+                                        if (obj.data[i].attributes.direction_id == 0) {
+                                                in_train = "Southbound train arriving at: ";
+                                                out_train = "; southbound train departing at: ";
+                                        } else {
+                                                in_train = "Northbound train arriving at: ";
+                                                out_train = "; northbound train departing at: ";
+                                        }
+                                        
+                                        content_str += in_train + obj.data[i].attributes.arrival_time + '\n' + out_train + obj.data[i].attributes.departure_time + '\n';
+                                }
+
+                                infowindow.setContent(content_str);
+                        }
+                }
+
+                http_req.send();
+                infowindow.open(map, markers[8]);
         });
+
         markers[9].addListener('click', function() {
-                t_infowindow.open(map, markers[9]);
+                var http_req = new XMLHttpRequest();
+                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-sstat", true);
+                
+                http_req.onreadystatechange = function() {
+                        if (http_req.readyState == 4 && http_req.status == 200) {
+                                var obj = JSON.parse(http_req.responseText);
+                                var i, in_train, out_train, content_str = "";
+                                for (i = 0; i < 10; i++) {
+                                        if (obj.data[i].attributes.direction_id == 0) {
+                                                in_train = "Southbound train arriving at: ";
+                                                out_train = "; southbound train departing at: ";
+                                        } else {
+                                                in_train = "Northbound train arriving at: ";
+                                                out_train = "; northbound train departing at: ";
+                                        }
+                                        
+                                        content_str += in_train + obj.data[i].attributes.arrival_time + '\n' + out_train + obj.data[i].attributes.departure_time + '\n';
+                                }
+
+                                infowindow.setContent(content_str);
+                        }
+                }
+
+                http_req.send();
+                infowindow.open(map, markers[9]);
         });
+
         markers[10].addListener('click', function() {
-                t_infowindow.open(map, markers[10]);
+                var http_req = new XMLHttpRequest();
+                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-brdwy", true);
+                
+                http_req.onreadystatechange = function() {
+                        if (http_req.readyState == 4 && http_req.status == 200) {
+                                var obj = JSON.parse(http_req.responseText);
+                                var i, in_train, out_train, content_str = "";
+                                for (i = 0; i < 10; i++) {
+                                        if (obj.data[i].attributes.direction_id == 0) {
+                                                in_train = "Southbound train arriving at: ";
+                                                out_train = "; southbound train departing at: ";
+                                        } else {
+                                                in_train = "Northbound train arriving at: ";
+                                                out_train = "; northbound train departing at: ";
+                                        }
+                                        
+                                        content_str += in_train + obj.data[i].attributes.arrival_time + '\n' + out_train + obj.data[i].attributes.departure_time + '\n';
+                                }
+
+                                infowindow.setContent(content_str);
+                        }
+                }
+
+                http_req.send();
+                infowindow.open(map, markers[10]);
         });
+
         markers[11].addListener('click', function() {
-                t_infowindow.open(map, markers[11]);
+                var http_req = new XMLHttpRequest();
+                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-andrw", true);
+                
+                http_req.onreadystatechange = function() {
+                        if (http_req.readyState == 4 && http_req.status == 200) {
+                                var obj = JSON.parse(http_req.responseText);
+                                var i, in_train, out_train, content_str = "";
+                                for (i = 0; i < 10; i++) {
+                                        if (obj.data[i].attributes.direction_id == 0) {
+                                                in_train = "Southbound train arriving at: ";
+                                                out_train = "; southbound train departing at: ";
+                                        } else {
+                                                in_train = "Northbound train arriving at: ";
+                                                out_train = "; northbound train departing at: ";
+                                        }
+                                        
+                                        content_str += in_train + obj.data[i].attributes.arrival_time + '\n' + out_train + obj.data[i].attributes.departure_time + '\n';
+                                }
+
+                                infowindow.setContent(content_str);
+                        }
+                }
+
+                http_req.send();
+                infowindow.open(map, markers[11]);
         });
+
         markers[12].addListener('click', function() {
-                t_infowindow.open(map, markers[12]);
+                var http_req = new XMLHttpRequest();
+                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-jfk", true);
+                
+                http_req.onreadystatechange = function() {
+                        if (http_req.readyState == 4 && http_req.status == 200) {
+                                var obj = JSON.parse(http_req.responseText);
+                                var i, in_train, out_train, content_str = "";
+                                for (i = 0; i < 10; i++) {
+                                        if (obj.data[i].attributes.direction_id == 0) {
+                                                in_train = "Southbound train arriving at: ";
+                                                out_train = "; southbound train departing at: ";
+                                        } else {
+                                                in_train = "Northbound train arriving at: ";
+                                                out_train = "; northbound train departing at: ";
+                                        }
+                                        
+                                        content_str += in_train + obj.data[i].attributes.arrival_time + '\n' + out_train + obj.data[i].attributes.departure_time + '\n';
+                                }
+
+                                infowindow.setContent(content_str);
+                        }
+                }
+
+                http_req.send();
+                infowindow.open(map, markers[12]);
         });
+
         markers[13].addListener('click', function() {
-                t_infowindow.open(map, markers[13]);
+                var http_req = new XMLHttpRequest();
+                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-nqncy", true);
+                
+                http_req.onreadystatechange = function() {
+                        if (http_req.readyState == 4 && http_req.status == 200) {
+                                var obj = JSON.parse(http_req.responseText);
+                                var i, in_train, out_train, content_str = "";
+                                for (i = 0; i < 10; i++) {
+                                        if (obj.data[i].attributes.direction_id == 0) {
+                                                in_train = "Southbound train arriving at: ";
+                                                out_train = "; southbound train departing at: ";
+                                        } else {
+                                                in_train = "Northbound train arriving at: ";
+                                                out_train = "; northbound train departing at: ";
+                                        }
+                                        
+                                        content_str += in_train + obj.data[i].attributes.arrival_time + '\n' + out_train + obj.data[i].attributes.departure_time + '\n';
+                                }
+
+                                infowindow.setContent(content_str);
+                        }
+                }
+
+                http_req.send();
+                infowindow.open(map, markers[13]);
         });
+
         markers[14].addListener('click', function() {
-                t_infowindow.open(map, markers[14]);
+                var http_req = new XMLHttpRequest();
+                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-wlsta", true);
+                
+                http_req.onreadystatechange = function() {
+                        if (http_req.readyState == 4 && http_req.status == 200) {
+                                var obj = JSON.parse(http_req.responseText);
+                                var i, in_train, out_train, content_str = "";
+                                for (i = 0; i < 10; i++) {
+                                        if (obj.data[i].attributes.direction_id == 0) {
+                                                in_train = "Southbound train arriving at: ";
+                                                out_train = "; southbound train departing at: ";
+                                        } else {
+                                                in_train = "Northbound train arriving at: ";
+                                                out_train = "; northbound train departing at: ";
+                                        }
+                                        
+                                        content_str += in_train + obj.data[i].attributes.arrival_time + '\n' + out_train + obj.data[i].attributes.departure_time + '\n';
+                                }
+
+                                infowindow.setContent(content_str);
+                        }
+                }
+
+                http_req.send();
+                infowindow.open(map, markers[14]);
         });
+
         markers[15].addListener('click', function() {
-                t_infowindow.open(map, markers[15]);
+                var http_req = new XMLHttpRequest();
+                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-qnctr", true);
+                
+                http_req.onreadystatechange = function() {
+                        if (http_req.readyState == 4 && http_req.status == 200) {
+                                var obj = JSON.parse(http_req.responseText);
+                                var i, in_train, out_train, content_str = "";
+                                for (i = 0; i < 10; i++) {
+                                        if (obj.data[i].attributes.direction_id == 0) {
+                                                in_train = "Southbound train arriving at: ";
+                                                out_train = "; southbound train departing at: ";
+                                        } else {
+                                                in_train = "Northbound train arriving at: ";
+                                                out_train = "; northbound train departing at: ";
+                                        }
+                                        
+                                        content_str += in_train + obj.data[i].attributes.arrival_time + '\n' + out_train + obj.data[i].attributes.departure_time + '\n';
+                                }
+
+                                infowindow.setContent(content_str);
+                        }
+                }
+
+                http_req.send();
+                infowindow.open(map, markers[15]);
         });
+
         markers[16].addListener('click', function() {
-                t_infowindow.open(map, markers[16]);
+                var http_req = new XMLHttpRequest();
+                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-qamnl", true);
+                
+                http_req.onreadystatechange = function() {
+                        if (http_req.readyState == 4 && http_req.status == 200) {
+                                var obj = JSON.parse(http_req.responseText);
+                                var i, in_train, out_train, content_str = "";
+                                for (i = 0; i < 10; i++) {
+                                        if (obj.data[i].attributes.direction_id == 0) {
+                                                in_train = "Southbound train arriving at: ";
+                                                out_train = "; southbound train departing at: ";
+                                        } else {
+                                                in_train = "Northbound train arriving at: ";
+                                                out_train = "; northbound train departing at: ";
+                                        }
+                                        
+                                        content_str += in_train + obj.data[i].attributes.arrival_time + '\n' + out_train + obj.data[i].attributes.departure_time + '\n';
+                                }
+
+                                infowindow.setContent(content_str);
+                        }
+                }
+
+                http_req.send();
+                infowindow.open(map, markers[16]);
         });
+
         markers[17].addListener('click', function() {
-                t_infowindow.open(map, markers[17]);
+                var http_req = new XMLHttpRequest();
+                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-brntn", true);
+                
+                http_req.onreadystatechange = function() {
+                        if (http_req.readyState == 4 && http_req.status == 200) {
+                                var obj = JSON.parse(http_req.responseText);
+                                var i, in_train, out_train, content_str = "";
+                                for (i = 0; i < 10; i++) {
+                                        if (obj.data[i].attributes.direction_id == 0) {
+                                                in_train = "Southbound train arriving at: ";
+                                                out_train = "; southbound train departing at: ";
+                                        } else {
+                                                in_train = "Northbound train arriving at: ";
+                                                out_train = "; northbound train departing at: ";
+                                        }
+                                        
+                                        content_str += in_train + obj.data[i].attributes.arrival_time + '\n' + out_train + obj.data[i].attributes.departure_time + '\n';
+                                }
+
+                                infowindow.setContent(content_str);
+                        }
+                }
+
+                http_req.send();
+                infowindow.open(map, markers[17]);
         });
+
         markers[18].addListener('click', function() {
-                t_infowindow.open(map, markers[18]);
+                var http_req = new XMLHttpRequest();
+                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-shmnl", true);
+                
+                http_req.onreadystatechange = function() {
+                        if (http_req.readyState == 4 && http_req.status == 200) {
+                                var obj = JSON.parse(http_req.responseText);
+                                var i, in_train, out_train, content_str = "";
+                                for (i = 0; i < 10; i++) {
+                                        if (obj.data[i].attributes.direction_id == 0) {
+                                                in_train = "Southbound train arriving at: ";
+                                                out_train = "; southbound train departing at: ";
+                                        } else {
+                                                in_train = "Northbound train arriving at: ";
+                                                out_train = "; northbound train departing at: ";
+                                        }
+                                        
+                                        content_str += in_train + obj.data[i].attributes.arrival_time + '\n' + out_train + obj.data[i].attributes.departure_time + '\n';
+                                }
+
+                                infowindow.setContent(content_str);
+                        }
+                }
+
+                http_req.send();
+                infowindow.open(map, markers[18]);
         });
+
         markers[19].addListener('click', function() {
-                t_infowindow.open(map, markers[19]);
+                var http_req = new XMLHttpRequest();
+                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-smmnl", true);
+                
+                http_req.onreadystatechange = function() {
+                        if (http_req.readyState == 4 && http_req.status == 200) {
+                                var obj = JSON.parse(http_req.responseText);
+                                var i, in_train, out_train, content_str = "";
+                                for (i = 0; i < 10; i++) {
+                                        if (obj.data[i].attributes.direction_id == 0) {
+                                                in_train = "Southbound train arriving at: ";
+                                                out_train = "; southbound train departing at: ";
+                                        } else {
+                                                in_train = "Northbound train arriving at: ";
+                                                out_train = "; northbound train departing at: ";
+                                        }
+                                        
+                                        content_str += in_train + obj.data[i].attributes.arrival_time + '\n' + out_train + obj.data[i].attributes.departure_time + '\n';
+                                }
+
+                                infowindow.setContent(content_str);
+                        }
+                }
+
+                http_req.send();
+                infowindow.open(map, markers[19]);
         });
+
         markers[20].addListener('click', function() {
-                t_infowindow.open(map, markers[20]);
+                var http_req = new XMLHttpRequest();
+                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-fldcr", true);
+                
+                http_req.onreadystatechange = function() {
+                        if (http_req.readyState == 4 && http_req.status == 200) {
+                                var obj = JSON.parse(http_req.responseText);
+                                var i, in_train, out_train, content_str = "";
+                                for (i = 0; i < 10; i++) {
+                                        if (obj.data[i].attributes.direction_id == 0) {
+                                                in_train = "Southbound train arriving at: ";
+                                                out_train = "; southbound train departing at: ";
+                                        } else {
+                                                in_train = "Northbound train arriving at: ";
+                                                out_train = "; northbound train departing at: ";
+                                        }
+                                        
+                                        content_str += in_train + obj.data[i].attributes.arrival_time + '\n' + out_train + obj.data[i].attributes.departure_time + '\n';
+                                }
+
+                                infowindow.setContent(content_str);
+                        }
+                }
+
+                http_req.send();
+                infowindow.open(map, markers[20]);
         });
+
         markers[21].addListener('click', function() {
-                t_infowindow.open(map, markers[21]);
+                var http_req = new XMLHttpRequest();
+                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-asmnl", true);
+                
+                http_req.onreadystatechange = function() {
+                        if (http_req.readyState == 4 && http_req.status == 200) {
+                                var obj = JSON.parse(http_req.responseText);
+                                var i, in_train, out_train, content_str = "";
+                                for (i = 0; i < 10; i++) {
+                                        if (obj.data[i].attributes.direction_id == 0) {
+                                                in_train = "Southbound train arriving at: ";
+                                                out_train = "; southbound train departing at: ";
+                                        } else {
+                                                in_train = "Northbound train arriving at: ";
+                                                out_train = "; northbound train departing at: ";
+                                        }
+                                        
+                                        content_str += in_train + obj.data[i].attributes.arrival_time + '\n' + out_train + obj.data[i].attributes.departure_time + '\n';
+                                }
+
+                                infowindow.setContent(content_str);
+                        }
+                }
+
+                http_req.send();
+                infowindow.open(map, markers[21]);
         });
+
 
         /* Initialize red line polylines */
         var braintree_line = new google.maps.Polyline({
@@ -333,4 +857,3 @@ function init_places(position) {
 
         closest_line.setMap(map);
 }
-
