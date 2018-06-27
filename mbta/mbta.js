@@ -76,8 +76,8 @@ function init_places(position) {
         var infowindow = new google.maps.InfoWindow();
 
         var url;
-        var alfcl_url = "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-alfcl";
-        var davis_url = "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-davis";
+        var alfcl_url = "https://tranquil-castle-81922.herokuapp.com/redline/schedule.json?stop_id=place-alfcl";
+        var davis_url = "hhttps://tranquil-castle-81922.herokuapp.com/redline/schedule.json?stop_id=place-davis";
 
         for (i = 0; i < 22; i++) {
                 var marker = new google.maps.Marker({
@@ -93,7 +93,7 @@ function init_places(position) {
 
         markers[0].addListener('click', function() {
                 var http_req = new XMLHttpRequest();
-                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-alfcl", true);
+                http_req.open("GET", "https://tranquil-castle-81922.herokuapp.com/redline/schedule.json?stop_id=place-alfcl", true);
                 
                 http_req.onreadystatechange = function() {
                         if (http_req.readyState == 4 && http_req.status == 200) {
@@ -121,7 +121,7 @@ function init_places(position) {
 
         markers[1].addListener('click', function() {
                 var http_req = new XMLHttpRequest();
-                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-davis", true);
+                http_req.open("GET", "https://tranquil-castle-81922.herokuapp.com/redline/schedule.json?stop_id=place-davis", true);
                 
                 http_req.onreadystatechange = function() {
                         if (http_req.readyState == 4 && http_req.status == 200) {
@@ -149,7 +149,7 @@ function init_places(position) {
 
         markers[2].addListener('click', function() {
                 var http_req = new XMLHttpRequest();
-                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-portr", true);
+                http_req.open("GET", "https://tranquil-castle-81922.herokuapp.com/redline/schedule.json?stop_id=place-portr", true);
                 
                 http_req.onreadystatechange = function() {
                         if (http_req.readyState == 4 && http_req.status == 200) {
@@ -177,7 +177,7 @@ function init_places(position) {
 
         markers[3].addListener('click', function() {
                 var http_req = new XMLHttpRequest();
-                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-harsq", true);
+                http_req.open("GET", "https://tranquil-castle-81922.herokuapp.com/redline/schedule.json?stop_id=place-harsq", true);
                 
                 http_req.onreadystatechange = function() {
                         if (http_req.readyState == 4 && http_req.status == 200) {
@@ -205,7 +205,7 @@ function init_places(position) {
 
         markers[4].addListener('click', function() {
                 var http_req = new XMLHttpRequest();
-                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-cntsq", true);
+                http_req.open("GET", "https://tranquil-castle-81922.herokuapp.com/redline/schedule.json?stop_id=place-cntsq", true);
                 
                 http_req.onreadystatechange = function() {
                         if (http_req.readyState == 4 && http_req.status == 200) {
@@ -233,7 +233,7 @@ function init_places(position) {
 
         markers[5].addListener('click', function() {
                 var http_req = new XMLHttpRequest();
-                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-knncl", true);
+                http_req.open("GET", "https://tranquil-castle-81922.herokuapp.com/redline/schedule.json?stop_id=place-knncl", true);
                 
                 http_req.onreadystatechange = function() {
                         if (http_req.readyState == 4 && http_req.status == 200) {
@@ -261,7 +261,7 @@ function init_places(position) {
 
         markers[6].addListener('click', function() {
                 var http_req = new XMLHttpRequest();
-                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-chmnl", true);
+                http_req.open("GET", "https://tranquil-castle-81922.herokuapp.com/redline/schedule.json?stop_id=place-chmnl", true);
                 
                 http_req.onreadystatechange = function() {
                         if (http_req.readyState == 4 && http_req.status == 200) {
@@ -289,7 +289,7 @@ function init_places(position) {
 
         markers[7].addListener('click', function() {
                 var http_req = new XMLHttpRequest();
-                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-pktrm", true);
+                http_req.open("GET", "https://tranquil-castle-81922.herokuapp.com/redline/schedule.json?stop_id=place-pktrm", true);
                 
                 http_req.onreadystatechange = function() {
                         if (http_req.readyState == 4 && http_req.status == 200) {
@@ -317,7 +317,7 @@ function init_places(position) {
 
         markers[8].addListener('click', function() {
                 var http_req = new XMLHttpRequest();
-                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-dwnxg", true);
+                http_req.open("GET", "https://tranquil-castle-81922.herokuapp.com/redline/schedule.json?stop_id=place-dwnxg", true);
                 
                 http_req.onreadystatechange = function() {
                         if (http_req.readyState == 4 && http_req.status == 200) {
@@ -345,7 +345,7 @@ function init_places(position) {
 
         markers[9].addListener('click', function() {
                 var http_req = new XMLHttpRequest();
-                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-sstat", true);
+                http_req.open("GET", "https://tranquil-castle-81922.herokuapp.com/redline/schedule.json?stop_id=place-sstat", true);
                 
                 http_req.onreadystatechange = function() {
                         if (http_req.readyState == 4 && http_req.status == 200) {
@@ -373,7 +373,7 @@ function init_places(position) {
 
         markers[10].addListener('click', function() {
                 var http_req = new XMLHttpRequest();
-                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-brdwy", true);
+                http_req.open("GET", "https://tranquil-castle-81922.herokuapp.com/redline/schedule.json?stop_id=place-brdwy", true);
                 
                 http_req.onreadystatechange = function() {
                         if (http_req.readyState == 4 && http_req.status == 200) {
@@ -401,7 +401,7 @@ function init_places(position) {
 
         markers[11].addListener('click', function() {
                 var http_req = new XMLHttpRequest();
-                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-andrw", true);
+                http_req.open("GET", "https://tranquil-castle-81922.herokuapp.com/redline/schedule.json?stop_id=place-andrw", true);
                 
                 http_req.onreadystatechange = function() {
                         if (http_req.readyState == 4 && http_req.status == 200) {
@@ -429,7 +429,7 @@ function init_places(position) {
 
         markers[12].addListener('click', function() {
                 var http_req = new XMLHttpRequest();
-                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-jfk", true);
+                http_req.open("GET", "https://tranquil-castle-81922.herokuapp.com/redline/schedule.json?stop_id=place-jfk", true);
                 
                 http_req.onreadystatechange = function() {
                         if (http_req.readyState == 4 && http_req.status == 200) {
@@ -457,7 +457,7 @@ function init_places(position) {
 
         markers[13].addListener('click', function() {
                 var http_req = new XMLHttpRequest();
-                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-nqncy", true);
+                http_req.open("GET", "https://tranquil-castle-81922.herokuapp.com/redline/schedule.json?stop_id=place-nqncy", true);
                 
                 http_req.onreadystatechange = function() {
                         if (http_req.readyState == 4 && http_req.status == 200) {
@@ -485,7 +485,7 @@ function init_places(position) {
 
         markers[14].addListener('click', function() {
                 var http_req = new XMLHttpRequest();
-                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-wlsta", true);
+                http_req.open("GET", "https://tranquil-castle-81922.herokuapp.com/redline/schedule.json?stop_id=place-wlsta", true);
                 
                 http_req.onreadystatechange = function() {
                         if (http_req.readyState == 4 && http_req.status == 200) {
@@ -513,7 +513,7 @@ function init_places(position) {
 
         markers[15].addListener('click', function() {
                 var http_req = new XMLHttpRequest();
-                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-qnctr", true);
+                http_req.open("GET", "https://tranquil-castle-81922.herokuapp.com/redline/schedule.json?stop_id=place-qnctr", true);
                 
                 http_req.onreadystatechange = function() {
                         if (http_req.readyState == 4 && http_req.status == 200) {
@@ -541,7 +541,7 @@ function init_places(position) {
 
         markers[16].addListener('click', function() {
                 var http_req = new XMLHttpRequest();
-                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-qamnl", true);
+                http_req.open("GET", "https://tranquil-castle-81922.herokuapp.com/redline/schedule.json?stop_id=place-qamnl", true);
                 
                 http_req.onreadystatechange = function() {
                         if (http_req.readyState == 4 && http_req.status == 200) {
@@ -569,7 +569,7 @@ function init_places(position) {
 
         markers[17].addListener('click', function() {
                 var http_req = new XMLHttpRequest();
-                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-brntn", true);
+                http_req.open("GET", "https://tranquil-castle-81922.herokuapp.com/redline/schedule.json?stop_id=place-brntn", true);
                 
                 http_req.onreadystatechange = function() {
                         if (http_req.readyState == 4 && http_req.status == 200) {
@@ -597,7 +597,7 @@ function init_places(position) {
 
         markers[18].addListener('click', function() {
                 var http_req = new XMLHttpRequest();
-                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-shmnl", true);
+                http_req.open("GET", "https://tranquil-castle-81922.herokuapp.com/redline/schedule.json?stop_id=place-shmnl", true);
                 
                 http_req.onreadystatechange = function() {
                         if (http_req.readyState == 4 && http_req.status == 200) {
@@ -625,7 +625,7 @@ function init_places(position) {
 
         markers[19].addListener('click', function() {
                 var http_req = new XMLHttpRequest();
-                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-smmnl", true);
+                http_req.open("GET", "https://tranquil-castle-81922.herokuapp.com/redline/schedule.json?stop_id=place-smmnl", true);
                 
                 http_req.onreadystatechange = function() {
                         if (http_req.readyState == 4 && http_req.status == 200) {
@@ -653,7 +653,7 @@ function init_places(position) {
 
         markers[20].addListener('click', function() {
                 var http_req = new XMLHttpRequest();
-                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-fldcr", true);
+                http_req.open("GET", "https://tranquil-castle-81922.herokuapp.com/redline/schedule.json?stop_id=place-fldcr", true);
                 
                 http_req.onreadystatechange = function() {
                         if (http_req.readyState == 4 && http_req.status == 200) {
@@ -681,7 +681,7 @@ function init_places(position) {
 
         markers[21].addListener('click', function() {
                 var http_req = new XMLHttpRequest();
-                http_req.open("GET", "https://defense-in-derpth.herokuapp.com/redline/schedule.json?stop_id=place-asmnl", true);
+                http_req.open("GET", "https://tranquil-castle-81922.herokuapp.com/redline/schedule.json?stop_id=place-asmnl", true);
                 
                 http_req.onreadystatechange = function() {
                         if (http_req.readyState == 4 && http_req.status == 200) {
