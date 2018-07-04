@@ -2,42 +2,52 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Page Title</title>
+<title>Security Assessment</title>
 </head>
 <body>
 
 <h3>Introduction</h3>
-<p>I was hired as a security consultant to assess, document, and resolve any security or privacy issues that exist in a web application. The given web application allows users to enter a login, latitude, and longitude, and then submit the provided fields. Once submitted, they are offered to visit the home page, which contains a list of all recent users who have submitted their information through the form along with the login, latitude, and longitude that they provided. The web application is composed of only two files, server-vuln.js and package.json.</p>
+<p>I have been hired as a security consultant to assess, document, and resolve any security or privacy issues that exist in a web application. The given web application allows users to enter a login, latitude, and longitude, and then submit the provided fields. Once submitted, they are offered to visit the home page, which contains a list of all recent users who have submitted their information through the form along with the login, latitude, and longitude that they provided. The web application is composed of only two files, server-vuln.js and package.json.</p>
 
 <h3>Methodology</h3>
 <p>Before I performed a penetration test on the product, I reviewed the source code to gain an initial understanding of the code and note any potential risks. Once I understood what I would be working with, I selected a tool capable of scanning the application for vulnerabilities. I used OWASP ZAP to perform a pen test on this application. OWASP ZAP is an open source web application security scanner which can perform a vulnerability scan on any web application by entering its URL. In pen testing, I entered the URL “https://jordan-marsh.herokuapp.com”, which is the home page of the website. A discussion of the results of this scans may be found below.</p>
 
 <h3>Abstract of Findings</h3>
-<p>The analysis of the web application yielded six alerts. The individual alerts are listed below:
+<p>The analysis of the web application yielded six alerts. The individual alerts are listed blow, each with a brief description:
         <ul>
-                <li>Secure Pages Include Mixed Content (Including Scripts)</li>
-                <li>X-Frame-Options Header Not Set</li>
-                <li>Cross-Domain Javascript Source File Inclusion</li>
-                <li>Incomplete or No Cache-control and Pragma HTTP Header Set</li>
-                <li>Web Browser XSS Protection Not Enabled</li>
-                <li>X-Content-Type-Options Header Missing</li>
+                <li>Secure Pages Include Mixed Content (Including Scripts):<br>The page is only partially encrypted, which leaves all unencrypted content accessible to attackers.</li>
+
+                <li>X-Frame-Options Header Not Set:<br>When this header is not set, you allow for the possibility of clickjacking attacks, or attacks in which an attacker hides a hyperlink underneath legitimate clickable content, tricking the user into performing unintentional actions.</li>
+
+                <li>Cross-Domain Javascript Source File Inclusion:<br>The page includes at least one script file from a third-party domain, which is likely untrusted and uncontrollable.</li>
+
+                <li>Incomplete or No Cache-control and Pragma HTTP Header Set:<br>When this header is not set, you allow for the possiblility of sensitive information being stored in the browser's cache and compromised.</li>
+                
+                <li>Web Browser XSS Protection Not Enabled:<br>When this protection is disabled, you allow pages to continue loading even when they detect reflected XSS attacks, or attacks in which an attacker inserts (potentially malicious) executable code into an HTTP response.</li>
+                
+                <li>X-Content-Type-Options Header Missing:<br>When this header is not set, you allow for MIME sniffing/content sniffing, which can allow attackers to inspect the content of the data and send an XSS attack.</li>
         </ul>
 </p>
 
 
-
-
 <h3>Issues Found</h3>
-<p>For each issue that you find, document:
-Issue (e.g., database injection, really bad programming practice)
-Location / page where issue was found
-Severity of issue (e.g., low, medium , or high). Justify your answer.
-Description of issue. How did you find it? A screenshot of problem is excellent.
-Proof of vulnerability. Screenshots are important.
-Resolution. Make recommendation(s) on how issue can be resolved. Show code if possible.</p>
+<p>
+        Issue: Secure Pages Include Mixed Content (Including Scripts)<br>Location: https:/jordan-marsh.herokuapp.com<br>Severity: Medium. Risk severity is calculated by multiplying the Likelihood * the Impact of the issue. This issue is deemed medium risk because it could result in a loss of confidentiality, a loss of integrity, a loss of availability, and a loss of accountibility of data, and it is moderately likely.<br>Description: This issue was found using OWASP ZAP. See screenshot below.<br>Proof of Vulnerability:<br> <img src = "issue1.png" alt = "1 image" width = "500" height = "315"> <br>Resolution: Always use https:// URLs when loading resources on your page, not http:// URLs.<br><br>
+        
+        Issue: X-Frame-Options Header Not Set<br>Location: https:/jordan-marsh.herokuapp.com/entry.html<br>Severity: Medium. Risk severity is calculated by multiplying the Likelihood * the Impact of the issue. This issue is deemed medium risk because it could result in a loss of confidentiality, a loss of integrity, a loss of availability, and a loss of accountibility of data, and it is moderately likely.<br>Description: This issue was found using OWASP ZAP. See screenshot below.<br>Proof of Vulnerability:<br><img src = "issue2.png" alt = "2 image" width = "500" height = "315">  <br>Resolution: Set the X-Frame-Options header to 'DENY', "SAMEORIGIN', or 'ALLOW-FROM {uri}'.<br><br>
+        
+        Issue: Cross-Domain Javascript Source File Inclusion<br>Location: https:/jordan-marsh.herokuapp.com<br>Severity: Low. Risk severity is calculated by multiplying the Likelihood * the Impact of the issue. This issue is deemed low risk because it could result in a loss of confidentiality, a loss of integrity, a loss of availability, and a loss of accountibility of data, but it is not very likely.<br>Description: This issue was found using OWASP ZAP. See screenshot below.<br>Proof of Vulnerability:<br><img src = "issue3.png" alt = "3 image" width = "520" height = "300">  <br>Resolution: Never load JavaScript scripts from untrusted sources.<br><br>
+        
+        Issue: Incomplete or No Cache-control and Pragma HTTP Header Set<br>Location: https:/jordan-marsh.herokuapp.com/entry.html<br>Severity: Low. Risk severity is calculated by multiplying the Likelihood * the Impact of the issue. This issue is deemed low risk because it could result in a loss of confidentiality, a loss of integrity, a loss of availability, and a loss of accountibility of data, but it is not very likely.<br>Description: This issue was found using OWASP ZAP. See screenshot below.<br>Proof of Vulnerability:<br><img src = "issue4.png" alt = "4 image" width = "580" height = "280">  <br>Resolution: Set the cache-control header to 'no-cache, no-store, must-revalidate, private' and set the Pragma header to 'no-cache'.<br><br>
+       
+        Issue: Web Browser XSS Protection Not Enabled<br>Location: https:/jordan-marsh.herokuapp.com/entry.html<br>Severity: Low. Risk severity is calculated by multiplying the Likelihood * the Impact of the issue. This issue is deemed low risk because it could result in a loss of confidentiality, a loss of integrity, a loss of availability, and a loss of accountibility of data, but it is not very likely. <br>Description: This issue was found using OWASP ZAP. See screenshot below.<br>Proof of Vulnerability:<br><img src = "issue5.png" alt = "5 image" width = "500" height = "315"> <br>Resolution: Enable the browser's XSS Protection filter by setting the X-XSS-Protection HTTP response header to '1'.<br><br>
+        
+        Issue: X-Content-Type-Options Header Missing<br>Location: http://detectportal.firefox.com/success.txt<br>Severity: Low. Risk severity is calculated by multiplying the Likelihood * the Impact of the issue. This issue is deemed low risk because it could result in a loss of confidentiality, a loss of integrity, a loss of availability, and a loss of accountibility of data, but it is not very likely. <br>Description: This issue was found using OWASP ZAP. See screenshot below.<br>Proof of Vulnerability:<br><img src = "issue6.png" alt = "6 image" width = "500" height = "315"><br>Resolution: Set the X-Content-Type-Options header to 'nosniff' for all web pages.
+
+</p>
 
 <h3>Conclusion</h3>
-<p>You can also list future considerations and recommendations with costs</p>
+<p>Many of the security/privacy issues detected by the OWASP ZAP scanner are low risk and can be fixed simply by adding Headers to html files. By satisfying the suggested resolutions for each issue above, this web application will be much more secure and any attacks will be far less likely. Furthermore, we recommend that you scan your web applications for vulnerabilities at least once a month, to ensure that any changes in the source code do not negatively impact the security of the application.</p>
 
 </body>
 </html>
