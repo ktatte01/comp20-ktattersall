@@ -6,5 +6,4 @@ To my knowledge, all aspects of this work have been correctly implemented.
 
 I have neither collaborated nor discussed this assignment with anyone.
 
-I spent approximately __ hours completing this assignment.
-
+I spent approximately 3.5 hours completing this assignment.
