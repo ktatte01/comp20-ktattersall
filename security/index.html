@@ -7,19 +7,32 @@
 <body>
 
 <h3>Introduction</h3>
-<p>This is the introduction.</p>
+<p>I was hired as a security consultant to assess, document, and resolve any security or privacy issues that exist in a web application. The given web application allows users to enter a login, latitude, and longitude, and then submit the provided fields. Once submitted, they are offered to visit the home page, which contains a list of all recent users who have submitted their information through the form along with the login, latitude, and longitude that they provided. The web application is composed of only two files, server-vuln.js and package.json.</p>
 
 <h3>Methodology</h3>
-<p>This is the methodology.</p>
+<p>Before I performed a penetration test on the product, I reviewed the source code to gain an initial understanding of the code and note any potential risks. Once I understood what I would be working with, I selected a tool capable of scanning the application for vulnerabilities. I used OWASP ZAP to perform a pen test on this application. OWASP ZAP is an open source web application security scanner which can perform a vulnerability scan on any web application by entering its URL. In pen testing, I entered the URL “https://jordan-marsh.herokuapp.com”, which is the home page of the website. A discussion of the results of this scans may be found below.</p>
 
 <h3>Abstract of Findings</h3>
-<p>This is the abstract of findings.</p>
+<p>The analysis of the web application yielded six alerts. The individual alerts are listed below:
+Secure Pages Include Mixed Content (Including Scripts)
+X-Frame-Options Header Not Set
+Cross-Domain Javascript Source File Inclusion
+Incomplete or No Cache-control and Pragma HTTP Header Set
+Web Browser XSS Protection Not Enabled
+X-Content-Type-Options Header Missing
+</p>
 
 <h3>Issues Found</h3>
-<p>This is the issues found.</p>
+<p>For each issue that you find, document:
+Issue (e.g., database injection, really bad programming practice)
+Location / page where issue was found
+Severity of issue (e.g., low, medium , or high). Justify your answer.
+Description of issue. How did you find it? A screenshot of problem is excellent.
+Proof of vulnerability. Screenshots are important.
+Resolution. Make recommendation(s) on how issue can be resolved. Show code if possible.</p>
 
 <h3>Conclusion</h3>
-<p>This is the conclusion.</p>
+<p>You can also list future considerations and recommendations with costs</p>
 
 </body>
 </html>
